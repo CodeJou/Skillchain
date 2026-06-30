@@ -167,6 +167,9 @@ public class Main {
 		
 		//(9) Ausgabe eingegebener Werte
 		werteAusgeben(stresslevel,zeit,einordnungStresslevel);
+		
+		//(10) Liste Skills (filtern anhand Zeitangabe)
+		filterSkillsnachZeit(skillNamen,dauer,zeit);
 
 
 	
@@ -252,12 +255,19 @@ public static int pruefeEingabeZeit(Scanner scanner)
 public static void werteAusgeben(int stresslevel, int zeit, String einordnungStresslevel)
 {   
 	System.out.println("");
-	System.out.println("▶️ DEINE WERTE ◀️");
+	System.out.println("                                  ▶️ DEINE WERTE ◀️");
 	System.out.println("");
 	System.out.println("••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
 	System.out.println("");
 	System.out.println("↪ Dein Stresslevel liegt bei "+stresslevel+" % ( "+einordnungStresslevel+" )");
 	System.out.println("↪ Du möchtest "+zeit+" Minuten für die Regulierung aufwenden");
+	System.out.println("");
+	System.out.println("                                     [ INFO ]");
+	System.out.println("");
+	System.out.println("Ich habe eine Liste mit durchführbaren Skills für dich.");
+	System.out.println("Diese liste habe ich anhand deiner angegebenen Zeit von "+zeit+" Minuten erstellt");
+	System.out.println("D.h das jeder angegebene Skill in der Anwendung weniger Zeit bentsprucht, als dir zur verfügung steht.");
+	System.out.println("Dies ist noch nicht deine Skillchain!");
 	System.out.println("");
 	
 }
@@ -276,7 +286,16 @@ else
       }
 return einordnungStresslevel;
 }
-	
+//Hilfsmethode D Ausgabe/Skillsliste sortieren (Welche Skills zur Zeitangabe passt)
+public static void filterSkillsnachZeit(String []skillNamen, int [] dauer, int zeit)
+{
+	for (int i = 0; i < skillNamen.length; i++)
+	{
+		if (dauer[i]<=zeit)
+         { System.out.println(skillNamen[i]);
+           }
+	}
+}
 }//Schließt Klasse ab
 
 
