@@ -158,11 +158,15 @@ public class Main {
 		
 		//(7) Abfrage Stresslevel
 		abfrageStresslevel(einordnung);
-		double stresslevel = leseStresslevel(scanner);
+		int stresslevel = leseStresslevel(scanner);
+		String einordnungStresslevel = pruefeEinordnungStresslevel(einordnung,stresslevel);
 		
 		//(8) Abfrage verfügbare Zeit für Regulierung
 		abfrageZeit();
 		int zeit = leseZeit(scanner);
+		
+		//(9) Ausgabe eingegebener Werte
+		werteAusgeben(stresslevel,zeit,einordnungStresslevel);
 
 
 	
@@ -193,8 +197,8 @@ public static void abfrageStresslevel(String[] einordnung)
 		System.out.println("↪ Gib den für dich passenden Zahlenwert ein (Von 1 bis 100) :");
 	}
 //Lese Stresslevel
-public static double leseStresslevel(Scanner scanner)
-	{ double stresslevel;
+public static int leseStresslevel(Scanner scanner)
+	{ int stresslevel;
 	try { stresslevel = pruefeEingabeStresslevel(scanner);//Hilfsmethode A
 	       }
 	catch (java.lang.NumberFormatException exception1)
@@ -205,10 +209,10 @@ public static double leseStresslevel(Scanner scanner)
 	return stresslevel;
 	}
 //Hilfsmethode A lese Stresslevel/Eingabe prüfen
-public static double pruefeEingabeStresslevel(Scanner scanner)
+public static int pruefeEingabeStresslevel(Scanner scanner)
 	{
 		String eingabe = scanner.nextLine().replace(",",".").replace(" ", "");//Als String einlesen + Komma durch Punkt ersetzen
-	    double stresslevel = Double.parseDouble(eingabe);//Von String zu double 
+	    int stresslevel = Integer.parseInt(eingabe);//Von String zu double 
 	    
 	    while (stresslevel<1||stresslevel>100)//Wertebereich prüfen
 	    {   System.out.println("");
@@ -244,7 +248,34 @@ public static int pruefeEingabeZeit(Scanner scanner)
 	
   return zeit;
 }
-		
+//Ausgabe der eingegebenen Werte
+public static void werteAusgeben(int stresslevel, int zeit, String einordnungStresslevel)
+{   
+	System.out.println("");
+	System.out.println("▶️ DEINE WERTE ◀️");
+	System.out.println("");
+	System.out.println("••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
+	System.out.println("");
+	System.out.println("↪ Dein Stresslevel liegt bei "+stresslevel+" % ( "+einordnungStresslevel+" )");
+	System.out.println("↪ Du möchtest "+zeit+" Minuten für die Regulierung aufwenden");
+	System.out.println("");
+	
+}
+//Hilfsmethode C Ausgabe/Stresslevel zuordnen
+public static String pruefeEinordnungStresslevel(String [] einordnung, int stresslevel)
+{ String einordnungStresslevel;
+	
+if (stresslevel<=39)
+	{ einordnungStresslevel = einordnung [0];
+	  }
+else if (stresslevel<=69)
+    { einordnungStresslevel = einordnung [1];
+      }
+else
+    { einordnungStresslevel = einordnung [2];
+      }
+return einordnungStresslevel;
+}
 	
 }//Schließt Klasse ab
 
