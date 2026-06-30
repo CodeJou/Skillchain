@@ -9,15 +9,35 @@ public class Main {
 		
 		//(1) Array "Kathegorien" erzeugen
 		String[]kathegorien;
-		kathegorien = new String[6];
+		kathegorien = new String[21];
 				
 		//(1) Variablen/Kathegorien zuordnen
 		kathegorien [0] = "Achtsamkeit";
-		kathegorien [1] = "Bewegen";
-		kathegorien [2] = "Fühlen";
-		kathegorien [3] = "Riechen";
-		kathegorien [4] = "Schmecken";
-		kathegorien [5] = "Umgang mit Gefühlen";
+		kathegorien [1] = "Achtsamkeit";
+		kathegorien [2] = "Achtsamkeit";
+		
+		kathegorien [3] = "Bewegen";
+		kathegorien [4] = "Bewegen";
+		kathegorien [5] = "Bewegen";
+		kathegorien [6] = "Bewegen";
+		
+		kathegorien [7] = "Fühlen";
+		kathegorien [8] = "Fühlen";
+		kathegorien [9] = "Fühlen";
+		kathegorien [10]= "Fühlen";
+		kathegorien [11]= "Fühlen";
+		kathegorien [12]= "Fühlen";
+		kathegorien [13]= "Fühlen";
+		
+		kathegorien [14]= "Riechen";
+		kathegorien [15]= "Riechen";
+		
+		kathegorien [16]= "Schmecken";
+		kathegorien [17]= "Schmecken";
+		
+		kathegorien [18]= "Umgang mit Gefühlen";
+		kathegorien [19]= "Umgang mit Gefühlen";
+		kathegorien [20]= "Umgang mit Gefühlen";
 		
 		//(2) Array "Skillnamen" erzeugen
 		String []skillNamen;
@@ -55,26 +75,68 @@ public class Main {
 		
 		//(3) Array "Dauer des Skills" anlegen
 		int[]dauer;
-		dauer = new int[4];
+		dauer = new int[21];
 		
 		//(3) Variablen/Dauer zuordnen (Minuten)
-		dauer [0] = 1;
-		dauer [1] = 5;
-		dauer [2] = 10;
-		dauer [3] = 30;
+		dauer [0] = 5;
+		dauer [1] = 7;
+		dauer [2] = 20;
+		
+		dauer [3] = 5;
+		dauer [4] = 30;
+		dauer [5] = 30;
+		dauer [6] = 10;
+		
+		dauer [7] = 15;
+		dauer [8] = 10;
+		dauer [9] = 10;
+		dauer [10]= 15;
+		dauer [11]= 5;
+		dauer [12]= 5;
+		dauer [13]= 2;
+		
+		dauer [14]= 1;
+		dauer [15]= 1;
+		
+		dauer [16]= 1;
+		dauer [17]= 1;
+		
+		dauer [18]= 5;
+		dauer [19]= 5;
+		dauer [20]= 5;
 		
 		
 		//(4) Array "Skillwert" zur Effektivität des Skills anlegen
 		int []skillwert;
-		skillwert = new int[5];
+		skillwert = new int[21];
 		
 		//(4) Variablen/Skillwert zuordnen (Bezeichnet die Effektivität eines Skills)
-		skillwert [0] = 1;
+		skillwert [0] = 2;
 		skillwert [1] = 2;
-		skillwert [2] = 3;
-		skillwert [3] = 4;
-		skillwert [4] = 5;
+		skillwert [2] = 2;
 		
+		skillwert [3] = 3;
+		skillwert [4] = 4;
+		skillwert [5] = 3;
+		skillwert [6] = 2;
+		
+		skillwert [7] = 4;
+		skillwert [8] = 2;
+		skillwert [9] = 4;
+		skillwert [10]= 3;
+		skillwert [11]= 4;
+		skillwert [12]= 3;
+		skillwert [13]= 4;
+		
+		skillwert [14] = 5;
+		skillwert [15] = 3;
+		
+		skillwert [16] = 2;
+		skillwert [17] = 2;
+		
+		skillwert [18]= 3;
+		skillwert [19]= 3;
+		skillwert [20]= 3;
 		
 		//(5) Array "Unterteilung" zur späteren Einsortierung des Stresslevels anlegen
 		String []einordnung;
@@ -100,6 +162,7 @@ public class Main {
 		
 		//(8) Abfrage verfügbare Zeit für Regulierung
 		abfrageZeit();
+		int zeit = leseZeit(scanner);
 
 
 	
@@ -121,13 +184,13 @@ public static void begrueßung()
 //Abfrage Stresslevel
 public static void abfrageStresslevel(String[] einordnung)
 	{
-		System.out.println("▶️ Stresslevel einschätzen ◀️");
+		System.out.println("▶️ STRESSLEVEL EINSCHÄTZEN ◀️");
 		System.out.println("");
 		System.out.println(" 1 bis  39 → "+einordnung[0]);
 		System.out.println("40 bis  69 → "+einordnung[1]);
 		System.out.println("70 bis 100 → "+einordnung[2]);
 		System.out.println("");
-		System.out.println("↪ Gib den für dich passenden Zahlenwert ein (Von 1 bis 100)");
+		System.out.println("↪ Gib den für dich passenden Zahlenwert ein (Von 1 bis 100) :");
 	}
 //Lese Stresslevel
 public static double leseStresslevel(Scanner scanner)
@@ -144,7 +207,7 @@ public static double leseStresslevel(Scanner scanner)
 //Hilfsmethode A lese Stresslevel/Eingabe prüfen
 public static double pruefeEingabeStresslevel(Scanner scanner)
 	{
-		String eingabe = scanner.nextLine().replace(",",".");//Als String einlesen + Komma durch Punkt ersetzen
+		String eingabe = scanner.nextLine().replace(",",".").replace(" ", "");//Als String einlesen + Komma durch Punkt ersetzen
 	    double stresslevel = Double.parseDouble(eingabe);//Von String zu double 
 	    
 	    while (stresslevel<1||stresslevel>100)//Wertebereich prüfen
@@ -157,11 +220,29 @@ public static double pruefeEingabeStresslevel(Scanner scanner)
 //Abfrage Zeit für Regulierung
 public static void abfrageZeit()
 {   System.out.println("");
-	System.out.println("▶️ Zeit für Regulierung angeben ◀️");
+	System.out.println("▶️ ZEIT FÜR REGULIERUNG ANGEBEN ◀️");
 	System.out.println("");
 	System.out.println("Skills benötigen mal mehr, mal weniger Zeitaufwand");
-	System.out.println("↪ Gib jetzt ein wieviele Minuten du aufwenden möchtest, um dein Stresslevel zu senken");
+	System.out.println("↪ Gib jetzt ein, wieviele Minuten du aufwenden möchtest um dein Stresslevel zu senken :");
+	}
+//lese Zeit 
+public static int leseZeit(Scanner scanner)
+{  int zeit;
+   try { zeit = pruefeEingabeZeit(scanner);
+           }
+   catch (java.lang.NumberFormatException exception2)
+   {   System.out.println("");
+	   System.out.println("[ Meldung : Eingabe unzulässig! Bitte gib einen runden Zahlenwert für deinen Zeitaufwand in Minuten an ]");
+	   zeit = pruefeEingabeZeit(scanner);
+	    }
+   return zeit;
+}
+//Hilfsmethode B lese Zeit/Eingabe prüfen
+public static int pruefeEingabeZeit(Scanner scanner)
+{ String eingabe = scanner.nextLine().replace(" ", "").replace("Minuten", "").replace("minuten", "");
+  int zeit = Integer.parseInt(eingabe);
 	
+  return zeit;
 }
 		
 	
