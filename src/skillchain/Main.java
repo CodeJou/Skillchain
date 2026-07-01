@@ -8,36 +8,36 @@ public class Main {
 		// Hier startet das Lernprojekt "skillchain"
 		
 		//(1) Array "Kathegorien" erzeugen
-		String[]kathegorien;
-		kathegorien = new String[21];
+		String[]skillKategorien;
+		skillKategorien = new String[21];
 				
 		//(1) Variablen/Kathegorien zuordnen
-		kathegorien [0] = "Achtsamkeit";
-		kathegorien [1] = "Achtsamkeit";
-		kathegorien [2] = "Achtsamkeit";
+		skillKategorien [0] = "Achtsamkeit";
+		skillKategorien [1] = "Achtsamkeit";
+		skillKategorien [2] = "Achtsamkeit";
 		
-		kathegorien [3] = "Bewegen";
-		kathegorien [4] = "Bewegen";
-		kathegorien [5] = "Bewegen";
-		kathegorien [6] = "Bewegen";
+		skillKategorien [3] = "Bewegen";
+		skillKategorien [4] = "Bewegen";
+		skillKategorien [5] = "Bewegen";
+		skillKategorien [6] = "Bewegen";
 		
-		kathegorien [7] = "Fühlen";
-		kathegorien [8] = "Fühlen";
-		kathegorien [9] = "Fühlen";
-		kathegorien [10]= "Fühlen";
-		kathegorien [11]= "Fühlen";
-		kathegorien [12]= "Fühlen";
-		kathegorien [13]= "Fühlen";
+		skillKategorien [7] = "Fühlen";
+		skillKategorien [8] = "Fühlen";
+		skillKategorien [9] = "Fühlen";
+		skillKategorien [10]= "Fühlen";
+		skillKategorien [11]= "Fühlen";
+		skillKategorien [12]= "Fühlen";
+		skillKategorien [13]= "Fühlen";
 		
-		kathegorien [14]= "Riechen";
-		kathegorien [15]= "Riechen";
+		skillKategorien [14]= "Riechen";
+		skillKategorien [15]= "Riechen";
 		
-		kathegorien [16]= "Schmecken";
-		kathegorien [17]= "Schmecken";
+		skillKategorien [16]= "Schmecken";
+		skillKategorien [17]= "Schmecken";
 		
-		kathegorien [18]= "Umgang mit Gefühlen";
-		kathegorien [19]= "Umgang mit Gefühlen";
-		kathegorien [20]= "Umgang mit Gefühlen";
+		skillKategorien [18]= "Umgang mit Gefühlen";
+		skillKategorien [19]= "Umgang mit Gefühlen";
+		skillKategorien [20]= "Umgang mit Gefühlen";
 		
 		//(2) Array "Skillnamen" erzeugen
 		String []skillNamen;
@@ -296,6 +296,7 @@ public static void filterSkillsnachZeit(String []skillNamen, int [] dauer, int z
            }
 	}
 }
+
 }//Schließt Klasse ab
 
 
