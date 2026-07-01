@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		// Hier startet das Lernprojekt "skillchain"
 		
-		//(1) Array "Kathegorien" erzeugen
+		//(1) Array "skillKategorien" erzeugen
 		String[]skillKategorien;
 		skillKategorien = new String[21];
 				
@@ -45,32 +45,32 @@ public class Main {
 		
 		//(2) Variablen/Skillnamen zuordnen
 		//Achtsamkeit
-		skillNamen [0] = "Atemübung";
-		skillNamen [1] = "5-4-3-Methode (sehen / hören)";
-		skillNamen [2] = "Aufräumen";
+		skillNamen [0] = "• Atemübung";
+		skillNamen [1] = "• 5-4-3-Methode (sehen / hören)";
+		skillNamen [2] = "• Aufräumen";
 		//Bewegen
-		skillNamen [3] = "Finger beschäftigen(Trommeln / Fidget Spinner)";
-		skillNamen [4] = "Sport treiben";
-		skillNamen [5] = "Spaziergang";
-		skillNamen [6] = "Muskeln anspannen / entspannen";
+		skillNamen [3] = "• Finger beschäftigen(Trommeln / Fidget Spinner)";
+		skillNamen [4] = "• Sport treiben";
+		skillNamen [5] = "• Spaziergang";
+		skillNamen [6] = "• Muskeln anspannen / entspannen";
 		//Fühlen
-		skillNamen [7] = "Kalt Duschen";
-		skillNamen [8] = "Igelball";
-		skillNamen [9] = "Kühlakku";
-		skillNamen [10]= "Barfuß laufen";
-		skillNamen [11]= "Eiswürfel lutschen";
-		skillNamen [12]= "Warmen Tee trinken";
-		skillNamen [13]= "Kaltes Wasser über Hände / Gesicht";
+		skillNamen [7] = "• Kalt Duschen";
+		skillNamen [8] = "• Igelball";
+		skillNamen [9] = "• Kühlakku";
+		skillNamen [10]= "• Barfuß laufen";
+		skillNamen [11]= "• Eiswürfel lutschen";
+		skillNamen [12]= "• Warmen Tee trinken";
+		skillNamen [13]= "• Kaltes Wasser über Hände / Gesicht";
 		//Riechen
-		skillNamen [14]= "Ammoniak";
-		skillNamen [15]= "Mentholstift";
+		skillNamen [14]= "• Ammoniak";
+		skillNamen [15]= "• Mentholstift";
 		//Schmecken
-		skillNamen [16]= "Saure / scharfe Bonbons";
-		skillNamen [17]= "Zitrone";
+		skillNamen [16]= "• Saure / scharfe Bonbons";
+		skillNamen [17]= "• Zitrone";
 		//Umgang mit Gefühlen
-		skillNamen [18]= "Emotionen erkennen/benennen (VEIN-AHA)";
-		skillNamen [19]= "Fakten prüfen";
-		skillNamen [20]= "Vorsicht Falle";
+		skillNamen [18]= "• Emotionen erkennen/benennen (VEIN-AHA)";
+		skillNamen [19]= "• Fakten prüfen";
+		skillNamen [20]= "• Vorsicht Falle";
 		
 		
 		//(3) Array "Dauer des Skills" anlegen
@@ -169,7 +169,7 @@ public class Main {
 		werteAusgeben(stresslevel,zeit,einordnungStresslevel);
 		
 		//(10) Liste Skills (filtern anhand Zeitangabe)
-		filterSkillsnachZeit(skillNamen,dauer,zeit);
+		filterSkillsnachZeit(skillNamen,dauer,zeit,skillKategorien);
 
 
 	
@@ -180,23 +180,23 @@ public class Main {
 //Begrüßung
 public static void begrueßung()
 	{
-		System.out.println("");
+		System.out.println();
 		System.out.println("••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
-		System.out.println("");
+		System.out.println();
 		System.out.println("Hey...bist du angespannt? Kein Problem :-)");
 		System.out.println("Lass uns gemeinsam dein Stresslevel ermitteln.");
 		System.out.println("Anhand deiner Daten gebe ich dir anschließend eine Empfehlung, wie du deine Anspannung regulieren kannst.");
-		System.out.println("");
+		System.out.println();
 	}
 //Abfrage Stresslevel
 public static void abfrageStresslevel(String[] einordnung)
 	{
 		System.out.println("▶️ STRESSLEVEL EINSCHÄTZEN ◀️");
-		System.out.println("");
+		System.out.println();
 		System.out.println(" 1 bis  39 → "+einordnung[0]);
 		System.out.println("40 bis  69 → "+einordnung[1]);
 		System.out.println("70 bis 100 → "+einordnung[2]);
-		System.out.println("");
+		System.out.println();
 		System.out.println("↪ Gib den für dich passenden Zahlenwert ein (Von 1 bis 100) :");
 	}
 //Lese Stresslevel
@@ -205,7 +205,7 @@ public static int leseStresslevel(Scanner scanner)
 	try { stresslevel = pruefeEingabeStresslevel(scanner);//Hilfsmethode A
 	       }
 	catch (java.lang.NumberFormatException exception1)
-	    {   System.out.println("");
+	    {   System.out.println();
 	    	System.out.println("[ Meldung : Eingabe unzulässig! Bitte gib einen Zahlenwert im Wertebereich von 1 bis 100 an ]");
 	    	stresslevel = pruefeEingabeStresslevel(scanner);
 		}
@@ -218,7 +218,7 @@ public static int pruefeEingabeStresslevel(Scanner scanner)
 	    int stresslevel = Integer.parseInt(eingabe);//Von String zu double 
 	    
 	    while (stresslevel<1||stresslevel>100)//Wertebereich prüfen
-	    {   System.out.println("");
+	    {   System.out.println();
 	    	System.out.println("[ Meldung : Eingabe entspricht nicht dem Wertebereich! Bitte gib einen Zahlenwert von 1 bis 100 an ]");
 	    	stresslevel = pruefeEingabeStresslevel(scanner);
 	    	}
@@ -226,9 +226,9 @@ public static int pruefeEingabeStresslevel(Scanner scanner)
 	 }
 //Abfrage Zeit für Regulierung
 public static void abfrageZeit()
-{   System.out.println("");
+{   System.out.println();
 	System.out.println("▶️ ZEIT FÜR REGULIERUNG ANGEBEN ◀️");
-	System.out.println("");
+	System.out.println();
 	System.out.println("Skills benötigen mal mehr, mal weniger Zeitaufwand");
 	System.out.println("↪ Gib jetzt ein, wieviele Minuten du aufwenden möchtest um dein Stresslevel zu senken :");
 	}
@@ -238,7 +238,7 @@ public static int leseZeit(Scanner scanner)
    try { zeit = pruefeEingabeZeit(scanner);
            }
    catch (java.lang.NumberFormatException exception2)
-   {   System.out.println("");
+   {   System.out.println();
 	   System.out.println("[ Meldung : Eingabe unzulässig! Bitte gib einen runden Zahlenwert für deinen Zeitaufwand in Minuten an ]");
 	   zeit = pruefeEingabeZeit(scanner);
 	    }
@@ -254,21 +254,21 @@ public static int pruefeEingabeZeit(Scanner scanner)
 //Ausgabe der eingegebenen Werte
 public static void werteAusgeben(int stresslevel, int zeit, String einordnungStresslevel)
 {   
-	System.out.println("");
+	System.out.println();
 	System.out.println("                                  ▶️ DEINE WERTE ◀️");
-	System.out.println("");
+	System.out.println();
 	System.out.println("••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
-	System.out.println("");
+	System.out.println();
 	System.out.println("↪ Dein Stresslevel liegt bei "+stresslevel+" % ( "+einordnungStresslevel+" )");
 	System.out.println("↪ Du möchtest "+zeit+" Minuten für die Regulierung aufwenden");
-	System.out.println("");
+	System.out.println();
 	System.out.println("                                     [ INFO ]");
-	System.out.println("");
+	System.out.println();
 	System.out.println("Ich habe eine Liste mit durchführbaren Skills für dich.");
 	System.out.println("Diese liste habe ich anhand deiner angegebenen Zeit von "+zeit+" Minuten erstellt");
 	System.out.println("D.h das jeder angegebene Skill in der Anwendung weniger Zeit bentsprucht, als dir zur verfügung steht.");
 	System.out.println("Dies ist noch nicht deine Skillchain!");
-	System.out.println("");
+	System.out.println();
 	
 }
 //Hilfsmethode C Ausgabe/Stresslevel zuordnen
@@ -287,14 +287,22 @@ else
 return einordnungStresslevel;
 }
 //Hilfsmethode D Ausgabe/Skillsliste sortieren (Welche Skills zur Zeitangabe passt)
-public static void filterSkillsnachZeit(String []skillNamen, int [] dauer, int zeit)
-{
+public static void filterSkillsnachZeit(String []skillNamen, int [] dauer, int zeit, String [] skillKategorien)
+{String letzteKategorie = "";//Hilfsvariable
 	for (int i = 0; i < skillNamen.length; i++)
 	{
-		if (dauer[i]<=zeit)
-         { System.out.println(skillNamen[i]);
+	   if (dauer[i]<=zeit)
+         { if (!skillKategorien[i].equals(letzteKategorie))//zur Ausgabe der Kategorie/Gibt Kategorie nur aus, wenn zuvor eine andere kategorie angegeben wurde
+            { System.out.println();
+              System.out.println();
+              System.out.println(skillKategorien[i]);
+              System.out.println("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯");
+              
+              letzteKategorie =skillKategorien[i];//Merkt sich die letzte ausgegebene Kategorie
+               }
+        System.out.println(skillNamen[i]);
            }
-	}
+	  }
 }
 
 }//Schließt Klasse ab
