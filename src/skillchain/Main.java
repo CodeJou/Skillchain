@@ -169,7 +169,9 @@ public class Main {
 		werteAusgeben(stresslevel,zeit,einordnungStresslevel);
 		
 		//(10) Liste Skills (filtern anhand Zeitangabe)
-		filterSkillsnachZeit(skillNamen,dauer,zeit,skillKategorien);
+		filterSkillsnachZeit(skillNamen,dauer,zeit,skillKategorien,stresslevel);
+		
+		
 
 
 	
@@ -255,18 +257,18 @@ public static int pruefeEingabeZeit(Scanner scanner)
 public static void werteAusgeben(int stresslevel, int zeit, String einordnungStresslevel)
 {   
 	System.out.println();
-	System.out.println("                                  ▶️ DEINE WERTE ◀️");
+	System.out.println("▶️ DEINE WERTE ◀️");
 	System.out.println();
 	System.out.println("••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
 	System.out.println();
 	System.out.println("↪ Dein Stresslevel liegt bei "+stresslevel+" % ( "+einordnungStresslevel+" )");
 	System.out.println("↪ Du möchtest "+zeit+" Minuten für die Regulierung aufwenden");
 	System.out.println();
-	System.out.println("                                     [ INFO ]");
+	System.out.println("[ INFO ]");
 	System.out.println();
 	System.out.println("Ich habe eine Liste mit durchführbaren Skills für dich.");
-	System.out.println("Diese liste habe ich anhand deiner angegebenen Zeit von "+zeit+" Minuten erstellt");
-	System.out.println("D.h das jeder angegebene Skill in der Anwendung weniger Zeit bentsprucht, als dir zur verfügung steht.");
+	System.out.println("Diese Liste habe ich anhand deiner angegebenen Zeit von "+zeit+" Minuten erstellt");
+	System.out.println("D.h das jeder angegebene Skill in der Anwendung weniger Zeit beantsprucht, als dir zur Verfügung steht.");
 	System.out.println("Dies ist noch nicht deine Skillchain!");
 	System.out.println();
 	
@@ -287,11 +289,11 @@ else
 return einordnungStresslevel;
 }
 //Hilfsmethode D Ausgabe/Skillsliste sortieren (Welche Skills zur Zeitangabe passt)
-public static void filterSkillsnachZeit(String []skillNamen, int [] dauer, int zeit, String [] skillKategorien)
+public static void filterSkillsnachZeit(String []skillNamen, int [] dauer, int zeit, String [] skillKategorien, int stresslevel)
 {String letzteKategorie = "";//Hilfsvariable
 	for (int i = 0; i < skillNamen.length; i++)
 	{
-	   if (dauer[i]<=zeit)
+	   if (dauer[i]<=zeit&&!(stresslevel>=70&&skillKategorien[i].equals("Umgang mit Gefühlen")))//Überprüft verfügbare Zeit mit Dauer der Anwendung + überprüft Stresslevel, da U.mit G. ungeeignet ab 70% ist
          { if (!skillKategorien[i].equals(letzteKategorie))//zur Ausgabe der Kategorie/Gibt Kategorie nur aus, wenn zuvor eine andere kategorie angegeben wurde
             { System.out.println();
               System.out.println();
