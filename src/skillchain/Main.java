@@ -66,7 +66,7 @@ public class Main {
 		skillNamen[15] = " Mentholstift";
 		// Schmecken
 		skillNamen[16] = " Saure / scharfe Bonbons";
-		skillNamen[17] = " Zitrone";
+		skillNamen[17] = " Nelken kauen";
 		// Umgang mit Gefühlen
 		skillNamen[18] = " Emotionen erkennen/benennen (VEIN-AHA)";
 		skillNamen[19] = " Fakten prüfen";
@@ -109,32 +109,32 @@ public class Main {
 		skillwert = new int[21];
 
 		// (4) Variablen/Skillwert zuordnen (Bezeichnet die Effektivität eines Skills)
-		skillwert[0] = 2;
-		skillwert[1] = 2;
+		skillwert[0] = 4;
+		skillwert[1] = 3;
 		skillwert[2] = 2;
 
 		skillwert[3] = 3;
-		skillwert[4] = 4;
-		skillwert[5] = 3;
+		skillwert[4] = 5;
+		skillwert[5] = 4;
 		skillwert[6] = 2;
 
-		skillwert[7] = 4;
+		skillwert[7] = 5;
 		skillwert[8] = 2;
 		skillwert[9] = 4;
 		skillwert[10] = 3;
-		skillwert[11] = 4;
-		skillwert[12] = 3;
-		skillwert[13] = 4;
+		skillwert[11] = 3;
+		skillwert[12] = 2;
+		skillwert[13] = 2;
 
 		skillwert[14] = 5;
 		skillwert[15] = 3;
 
-		skillwert[16] = 2;
-		skillwert[17] = 2;
+		skillwert[16] = 5;
+		skillwert[17] = 3;
 
-		skillwert[18] = 3;
+		skillwert[18] = 2;
 		skillwert[19] = 3;
-		skillwert[20] = 3;
+		skillwert[20] = 4;
 
 		// (5) Array "Unterteilung" zur späteren Einsortierung des Stresslevels anlegen
 		String[] einordnung;
