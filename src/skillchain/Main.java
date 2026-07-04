@@ -45,32 +45,32 @@ public class Main {
 
 		// (2) Variablen/Skillnamen zuordnen
 		// Achtsamkeit
-		skillNamen[0] = "• Atemübung";
-		skillNamen[1] = "• 5-4-3-Methode (sehen / hören)";
-		skillNamen[2] = "• Aufräumen";
+		skillNamen[0] = " Atemübung";
+		skillNamen[1] = " 5-4-3-Methode (sehen / hören)";
+		skillNamen[2] = " Aufräumen";
 		// Bewegen
-		skillNamen[3] = "• Finger beschäftigen(Trommeln / Fidget Spinner)";
-		skillNamen[4] = "• Sport treiben";
-		skillNamen[5] = "• Spaziergang";
-		skillNamen[6] = "• Muskeln anspannen / entspannen";
+		skillNamen[3] = " Finger beschäftigen(Trommeln / Fidget Spinner)";
+		skillNamen[4] = " Sport treiben";
+		skillNamen[5] = " Spaziergang";
+		skillNamen[6] = " Muskeln anspannen / entspannen";
 		// Fühlen
-		skillNamen[7] = "• Kalt Duschen";
-		skillNamen[8] = "• Igelball";
-		skillNamen[9] = "• Kühlakku";
-		skillNamen[10] = "• Barfuß laufen";
-		skillNamen[11] = "• Eiswürfel lutschen";
-		skillNamen[12] = "• Warmen Tee trinken";
-		skillNamen[13] = "• Kaltes Wasser über Hände / Gesicht";
+		skillNamen[7] = " Kalt Duschen";
+		skillNamen[8] = " Igelball";
+		skillNamen[9] = " Kühlakku";
+		skillNamen[10] = " Barfuß laufen";
+		skillNamen[11] = " Eiswürfel lutschen";
+		skillNamen[12] = " Warmen Tee trinken";
+		skillNamen[13] = " Kaltes Wasser über Hände / Gesicht";
 		// Riechen
-		skillNamen[14] = "• Ammoniak";
-		skillNamen[15] = "• Mentholstift";
+		skillNamen[14] = " Ammoniak";
+		skillNamen[15] = " Mentholstift";
 		// Schmecken
-		skillNamen[16] = "• Saure / scharfe Bonbons";
-		skillNamen[17] = "• Zitrone";
+		skillNamen[16] = " Saure / scharfe Bonbons";
+		skillNamen[17] = " Zitrone";
 		// Umgang mit Gefühlen
-		skillNamen[18] = "• Emotionen erkennen/benennen (VEIN-AHA)";
-		skillNamen[19] = "• Fakten prüfen";
-		skillNamen[20] = "• Vorsicht Falle";
+		skillNamen[18] = " Emotionen erkennen/benennen (VEIN-AHA)";
+		skillNamen[19] = " Fakten prüfen";
+		skillNamen[20] = " Vorsicht Falle";
 
 		// (3) Array "Dauer des Skills" anlegen
 		int[] dauer;
@@ -324,11 +324,18 @@ public class Main {
 				anzahlPassenderSkills++;// Speichert nächsten passenden Skill eine Zeile weiter unten im Array
 			}
 		}
+		//Ab hier nächster Abschnitt der Ausgabe
 		System.out.println();
-		System.out.println(" TEST AB HIER SKILLCHAIN ");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("▶️ DIE SKILLCHAIN ◀️");
+		System.out.println();
 		System.out.println(
-				"•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
+				"••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
 		System.out.println();
+		System.out.println(" START");
+		
 //Skillchain berechnen
 		// Um aus jeder Kategorie nur den ersten passenden Skill auswählen
 		boolean achtsamkeitVorhanden = false;
@@ -343,33 +350,51 @@ public class Main {
 											// Skillnamen/Kategorie/Dauer ect. so miteinander
 
 			if (skillKategorien[index].equals("Achtsamkeit") && !achtsamkeitVorhanden) {
-				System.out.println("1. :");
+				System.out.println();
+				System.out.println("  ↓");
+				System.out.println();
 				System.out.println(skillNamen[index]);
+				System.out.println(" Dauer : "+dauer[index]+" Minuten");
 				achtsamkeitVorhanden = true;// damit nur ein Skill ausgegeben wird
 			}
 			if (skillKategorien[index].equals("Bewegen") && !bewegenVorhanden) {
-				System.out.println("2. :");
+				System.out.println();
+				System.out.println("  ↓");
+				System.out.println();
 				System.out.println(skillNamen[index]);
+				System.out.println(" Dauer : "+dauer[index]+" Minuten");
 				bewegenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Fühlen") && !fuehlenVorhanden) {
-				System.out.println("3. :");
+				System.out.println();
+				System.out.println("  ↓");
+				System.out.println();
 				System.out.println(skillNamen[index]);
+				System.out.println(" Dauer : "+dauer[index]+" Minuten");
 				fuehlenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Riechen") && !riechenVorhanden) {
-				System.out.println("4. :");
+				System.out.println();
+				System.out.println("  ↓");
+				System.out.println();
 				System.out.println(skillNamen[index]);
+				System.out.println(" Dauer : "+dauer[index]+" Minuten");
 				riechenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Schmecken") && !schmeckenVorhanden) {
-				System.out.println("5. :");
+				System.out.println();
+				System.out.println("  ↓");
+				System.out.println();
 				System.out.println(skillNamen[index]);
+				System.out.println(" Dauer : "+dauer[index]+" Minuten");
 				schmeckenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Umgang mit Gefühlen") && !umgangVorhanden) {
-				System.out.println("6. :");
+				System.out.println();
+				System.out.println("  ↓");
+				System.out.println();
 				System.out.println(skillNamen[index]);
+				System.out.println(" Dauer : "+dauer[index]+" Minuten");
 				umgangVorhanden = true;
 			}
 		}
