@@ -165,7 +165,7 @@ public class Main {
 		werteAusgeben(stresslevel, zeit, einordnungStresslevel);
 
 		// (10) Liste Skills (filtern anhand Zeitangabe)
-		ausgabeGefilterteSkills(skillNamen, dauer, zeit, skillKategorien, stresslevel);
+		ausgabeGefilterteSkills(skillNamen, dauer, zeit, skillKategorien, stresslevel,skillwert);
 
 	}// Schließt main ab
 
@@ -294,7 +294,7 @@ public class Main {
 
 //Hilfsmethode D Ausgabe/Skillsliste sortieren (Welche Skills zur Zeitangabe passt)
 	public static void ausgabeGefilterteSkills(String[] skillNamen, int[] dauer, int zeit, String[] skillKategorien,
-			int stresslevel) {
+			int stresslevel, int [] skillwert) {
 		String letzteKategorie = "";// Hilfsvariable A (Überschrift)
 
 		int anzahlPassenderSkills = 0;// Hilfsvariable B um Liste zwischenzuspeichern (Array passendeSkills)
@@ -355,6 +355,7 @@ public class Main {
 				System.out.println();
 				System.out.println(skillNamen[index]);
 				System.out.println(" Dauer : "+dauer[index]+" Minuten");
+				System.out.println(" Effektivität : "+ skillwert[index]+" von 5 Punkten");
 				achtsamkeitVorhanden = true;// damit nur ein Skill ausgegeben wird
 			}
 			if (skillKategorien[index].equals("Bewegen") && !bewegenVorhanden) {
@@ -363,6 +364,7 @@ public class Main {
 				System.out.println();
 				System.out.println(skillNamen[index]);
 				System.out.println(" Dauer : "+dauer[index]+" Minuten");
+				System.out.println(" Effektivität : "+ skillwert[index]+" von 5 Punkten");
 				bewegenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Fühlen") && !fuehlenVorhanden) {
@@ -371,6 +373,7 @@ public class Main {
 				System.out.println();
 				System.out.println(skillNamen[index]);
 				System.out.println(" Dauer : "+dauer[index]+" Minuten");
+				System.out.println(" Effektivität : "+ skillwert[index]+" von 5 Punkten");
 				fuehlenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Riechen") && !riechenVorhanden) {
@@ -379,6 +382,7 @@ public class Main {
 				System.out.println();
 				System.out.println(skillNamen[index]);
 				System.out.println(" Dauer : "+dauer[index]+" Minuten");
+				System.out.println(" Effektivität : "+ skillwert[index]+" von 5 Punkten");
 				riechenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Schmecken") && !schmeckenVorhanden) {
@@ -387,6 +391,7 @@ public class Main {
 				System.out.println();
 				System.out.println(skillNamen[index]);
 				System.out.println(" Dauer : "+dauer[index]+" Minuten");
+				System.out.println(" Effektivität : "+ skillwert[index]+" von 5 Punkten");
 				schmeckenVorhanden = true;
 			}
 			if (skillKategorien[index].equals("Umgang mit Gefühlen") && !umgangVorhanden) {
@@ -395,6 +400,7 @@ public class Main {
 				System.out.println();
 				System.out.println(skillNamen[index]);
 				System.out.println(" Dauer : "+dauer[index]+" Minuten");
+				System.out.println(" Effektivität : "+ skillwert[index]+" von 5 Punkten");
 				umgangVorhanden = true;
 			}
 		}
