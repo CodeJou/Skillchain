@@ -31,15 +31,15 @@ public class Main {
 		skill [18] = new Skill(" Emotionen erkennen/benennen (VEIN-AHA)", "Umgang mit Gefühlen" , 15, 3);
 		skill [19] = new Skill(" Fakten prüfen", "Umgang mit Gefühlen" , 15, 4);
 		skill [20] = new Skill(" Vorsicht Falle", "Umgang mit Gefühlen" , 15, 5);
+		
+		//(2 New) Array Stresslevel-Objekte erzeugen
+		Stressbereich[] stressbereich = new Stressbereich [3];
+		
+		stressbereich [0] = new Stressbereich ("Geringes Stressniveau", 1, 39);
+		stressbereich [1] = new Stressbereich ("Mittleres Stressniveau", 40, 69);
+		stressbereich [2] = new Stressbereich ("Hochstress", 70, 100);
 
-        // (2) Array "Unterteilung" zur späteren Einsortierung des Stresslevels anlegen
-		String[] einordnung;
-		einordnung = new String[3];
-
-		// (2) Variablen/Unterteilung zuordnen
-		einordnung[0] = "Geringes Stressniveau";
-		einordnung[1] = "Mittleres Stressniveau";
-		einordnung[2] = "Hochstress";
+        
 
 // Ab Hier Interaktion mit Benutzer
 // Scanner implementieren
@@ -48,25 +48,25 @@ public class Main {
 		// (3) Begrüßung
 		begrueßung();
 
-		// (4) Abfrage Stresslevel
-		abfrageStresslevel(einordnung);
-		int stresslevel = leseStresslevel(scanner);
-		String einordnungStresslevel = pruefeEinordnungStresslevel(einordnung, stresslevel);
-
-		// (5) Abfrage verfügbare Zeit für Regulierung
+		// (4) Benutzerabfrage Stresseinschätzung
+		abfrageStresseinschaetzung(stressbereich);
+		int stressEinschaetzung = leseStressEinschaetzung(scanner);
+		String einordnungStressbereich = pruefeEinordnungStressbereich(stressbereich, stressEinschaetzung);
+		
+        // (5) Benutzerabfrage verfügbare Zeit
 		abfrageZeit();
 		int zeit = leseZeit(scanner);
 
 		// (6) Ausgabe eingegebener Werte
-		werteAusgeben(stresslevel, zeit, einordnungStresslevel);
+		werteAusgeben(stressEinschaetzung, zeit, einordnungStressbereich);
 
-		// (7) Liste Skills (filtern anhand Zeitangabe)
-		ausgabeGefilterteSkills(skill, stresslevel, zeit);
+		// (7) Liste Skills ausgeben
+		ausgabeGefilterteSkills(skill, stressEinschaetzung, zeit);
 
 // Schließt main ab
 	}
 //Ab hier Methoden
-    //Begrüßung
+    //(3) Begrüßung
 	public static void begrueßung() {
 		System.out.println();
 		System.out.println(
@@ -79,49 +79,48 @@ public class Main {
 		System.out.println();
 	}
 
-    //Abfrage Stresslevel
-	public static void abfrageStresslevel(String[] einordnung) {
-		System.out.println("▶️ STRESSLEVEL EINSCHÄTZEN ◀️");
+    //(4) Frage: Stresseinschätzung
+	public static void abfrageStresseinschaetzung(Stressbereich[] stressbereich) {
+		System.out.println("▶️ STRESS EINSCHÄTZEN ◀️");
 		System.out.println();
-		System.out.println(" 1 bis  39 → " + einordnung[0]);
-		System.out.println("40 bis  69 → " + einordnung[1]);
-		System.out.println("70 bis 100 → " + einordnung[2]);
+		System.out.println(" 1 bis  39 → " + stressbereich[0].name);
+		System.out.println("40 bis  69 → " + stressbereich[1].name);
+		System.out.println("70 bis 100 → " + stressbereich[2].name);
 		System.out.println();
-		System.out.println("↪ Gib den für dich passenden Zahlenwert ein (Von 1 bis 100) :");
+		System.out.println("↪ Gib den für dich passenden Wert als ganze Zahl ein (Von 1 bis 100) :");
 	}
 
-    //Lese Stresslevel
-	public static int leseStresslevel(Scanner scanner) {
-		int stresslevel;
+    //(4) Lesen/Validieren Benutzereingabe zu Stresseinschätzung
+	public static int leseStressEinschaetzung(Scanner scanner) {
+		int benutzerEingabe;
 		try {
-			stresslevel = pruefeEingabeStresslevel(scanner);// Hilfsmethode A
+			benutzerEingabe = pruefeEingabeWertStress(scanner);//Hilfsmethode A
 		} catch (java.lang.NumberFormatException exception1) {
 			System.out.println();
 			System.out.println(
-					"[ Meldung : Eingabe unzulässig! Bitte gib einen Zahlenwert im Wertebereich von 1 bis 100 an ]");
-			stresslevel = pruefeEingabeStresslevel(scanner);
+					"[ Meldung : Eingabe unzulässig! Bitte gib einen ganzen Zahlenwert im Wertebereich von 1 bis 100 an ]");
+			benutzerEingabe = pruefeEingabeWertStress(scanner);
 		}
-		return stresslevel;
+		return benutzerEingabe;
 	}
 
-    //Hilfsmethode A lese Stresslevel/Eingabe prüfen
-	public static int pruefeEingabeStresslevel(Scanner scanner) {
-		String eingabe = scanner.nextLine().replace(",", ".").replace(" ", "");// Als String einlesen + Komma durch
-																				// Punkt ersetzen
+    //(4) Hilfsmethode A prüft Benutzereingabe
+	public static int pruefeEingabeWertStress(Scanner scanner) {
+		String benutzerEingabe = scanner.nextLine().replace(" ", "");//als String einlesen,dann Leerzeichen entfernen
 
-		int stresslevel = Integer.parseInt(eingabe);// Von String zu double
+		int wertStress = Integer.parseInt(benutzerEingabe);//String zu int
 
-		while (stresslevel < 1 || stresslevel > 100)// Wertebereich prüfen
+		while (wertStress < 1 || wertStress > 100)// Wertebereich prüfen
 		{
 			System.out.println();
 			System.out.println(
-					"[ Meldung : Eingabe entspricht nicht dem Wertebereich! Bitte gib einen Zahlenwert von 1 bis 100 an ]");
-			stresslevel = pruefeEingabeStresslevel(scanner);
+					"[ Meldung : Eingabe entspricht nicht dem Wertebereich! Bitte gib einen ganzen Zahlenwert von 1 bis 100 an ]");
+			wertStress = pruefeEingabeWertStress(scanner);
 		}
-		return stresslevel;
+		return wertStress;
 	}
 
-    //Abfrage Zeit für Regulierung
+    //(5) Benutzerabfrage verfügbare Zeit
 	public static void abfrageZeit() {
 		System.out.println();
 		System.out.println("▶️ ZEIT FÜR REGULIERUNG ANGEBEN ◀️");
@@ -130,7 +129,7 @@ public class Main {
 		System.out.println("↪ Gib jetzt ein, wieviele Minuten du aufwenden möchtest um dein Stresslevel zu senken :");
 	}
 
-    //lese Zeit 
+    //(5) lese Zeit 
 	public static int leseZeit(Scanner scanner) {
 		int zeit;
 		try {
@@ -144,7 +143,7 @@ public class Main {
 		return zeit;
 	}
 
-    //Hilfsmethode B lese Zeit/Eingabe prüfen
+    //(5) Hilfsmethode B lese Zeit/Eingabe prüfen
 	public static int pruefeEingabeZeit(Scanner scanner) {
 		String eingabe = scanner.nextLine().replace(" ", "").replace("Minuten", "").replace("minuten", "");
 		int zeit = Integer.parseInt(eingabe);
@@ -152,15 +151,15 @@ public class Main {
 		return zeit;
 	}
 
-    //Ausgabe der eingegebenen Werte
-	public static void werteAusgeben(int stresslevel, int zeit, String einordnungStresslevel) {
+    //(6) Ausgabe der eingegebenen Werte
+	public static void werteAusgeben(int stressEinschaetzung, int zeit, String einordnungStressbereich) {
 		System.out.println();
 		System.out.println("▶️ DEINE WERTE ◀️");
 		System.out.println();
 		System.out.println(
 				"••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
 		System.out.println();
-		System.out.println("↪ Dein Stresslevel liegt bei " + stresslevel + " % ( " + einordnungStresslevel + " )");
+		System.out.println("↪ Dein Stresslevel liegt bei " + stressEinschaetzung + " % ( " + einordnungStressbereich + " )");
 		System.out.println("↪ Du möchtest " + zeit + " Minuten für die Regulierung aufwenden");
 		System.out.println();
 		System.out.println("[ INFO ]");
@@ -174,22 +173,22 @@ public class Main {
 
 	}
 
-    //Hilfsmethode C Ausgabe/Stresslevel zuordnen
-	public static String pruefeEinordnungStresslevel(String[] einordnung, int stresslevel) {
-		String einordnungStresslevel;
+    //(6) Hilfsmethode C Benutzereingabe zur Stresseinschätzung dem Stressbereich zuordnen
+	public static String pruefeEinordnungStressbereich(Stressbereich[]stressbereich, int stressEinschaetzung) {
+		String einordnungStressbereich;
 
-		if (stresslevel <= 39) {
-			einordnungStresslevel = einordnung[0];
-		} else if (stresslevel <= 69) {
-			einordnungStresslevel = einordnung[1];
+		if (stressEinschaetzung <= 39) {
+			einordnungStressbereich = stressbereich[0].name;
+		} else if (stressEinschaetzung <= 69) {
+			einordnungStressbereich = stressbereich[1].name;
 		} else {
-			einordnungStresslevel = einordnung[2];
+			einordnungStressbereich = stressbereich[2].name;
 		}
-		return einordnungStresslevel;
+		return einordnungStressbereich;
 	}
 
-    //Hilfsmethode D Ausgabe/Skillsliste sortieren (Welche Skills zur Zeitangabe passt)
-	public static void ausgabeGefilterteSkills(Skill[] skill, int stresslevel, int zeit) {
+    //(7) Liste Skills anhand von Benutzereingaben filtern
+	public static void ausgabeGefilterteSkills(Skill[] skill, int stressEinschaetzung, int zeit) {
 		
 		String letzteKategorie = "";// Hilfsvariable A (Überschrift)
 
@@ -203,7 +202,7 @@ public class Main {
 
 		{ // prüft ob Skill grundsätzlich geeignet ist (Dauer/Stresslevel Regel 1 U.m.G
 			// nur unterhalb von 70%)
-			if (skill[i].dauer <= zeit && !(stresslevel >= 70 && skill[i].kategorie.equals("Umgang mit Gefühlen"))) {
+			if (skill[i].dauer <= zeit && !(stressEinschaetzung >= 70 && skill[i].kategorie.equals("Umgang mit Gefühlen"))) {
 				// prüft ob neue Überschrift für Kategorie ausgegeben werden muss
 				if (!skill[i].kategorie.equals(letzteKategorie)) {
 					System.out.println();
