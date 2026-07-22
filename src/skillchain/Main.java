@@ -250,9 +250,8 @@ public class Main {
 				System.out.println();
 				System.out.println("  ↓");
 				System.out.println();
-				System.out.println(skill[index].name);
-				System.out.println(" Dauer : "+skill[index].dauer+" Minuten");
-				System.out.println(" Effektivität : "+ skill[index].effektivitaet+" von 5 Punkten");
+				skill[index].skillAusgeben();
+				
 				achtsamkeitVorhanden = true;// damit nur ein Skill ausgegeben wird
 				verbrauchteZeit = verbrauchteZeit+skill[index].dauer;//Erhöht den Wert um die Dauer des im Index hinterlegten Wertes
 			}
@@ -260,9 +259,7 @@ public class Main {
 				System.out.println();
 				System.out.println("  ↓");
 				System.out.println();
-				System.out.println(skill[index].name);
-				System.out.println(" Dauer : "+skill[index].dauer+" Minuten");
-				System.out.println(" Effektivität : "+ skill[index].effektivitaet+" von 5 Punkten");
+				skill[index].skillAusgeben();
 				bewegenVorhanden = true;
 				verbrauchteZeit = verbrauchteZeit+skill[index].dauer;
 			}
@@ -270,9 +267,7 @@ public class Main {
 				System.out.println();
 				System.out.println("  ↓");
 				System.out.println();
-				System.out.println(skill[index].name);
-				System.out.println(" Dauer : "+skill[index].dauer+" Minuten");
-				System.out.println(" Effektivität : "+ skill[index].effektivitaet+" von 5 Punkten");
+				skill[index].skillAusgeben();
 				fuehlenVorhanden = true;
 				verbrauchteZeit = verbrauchteZeit+skill[index].dauer;
 			}
@@ -280,9 +275,7 @@ public class Main {
 				System.out.println();
 				System.out.println("  ↓");
 				System.out.println();
-				System.out.println(skill[index].name);
-				System.out.println(" Dauer : "+skill[index].dauer+" Minuten");
-				System.out.println(" Effektivität : "+ skill[index].effektivitaet+" von 5 Punkten");
+				skill[index].skillAusgeben();
 				riechenVorhanden = true;
 				verbrauchteZeit = verbrauchteZeit+skill[index].dauer;
 			}
@@ -290,9 +283,7 @@ public class Main {
 				System.out.println();
 				System.out.println("  ↓");
 				System.out.println();
-				System.out.println(skill[index].name);
-				System.out.println(" Dauer : "+skill[index].dauer+" Minuten");
-				System.out.println(" Effektivität : "+ skill[index].effektivitaet+" von 5 Punkten");
+				skill[index].skillAusgeben();
 				schmeckenVorhanden = true;
 				verbrauchteZeit = verbrauchteZeit+skill[index].dauer;
 			}
@@ -300,9 +291,7 @@ public class Main {
 				System.out.println();
 				System.out.println("  ↓");
 				System.out.println();
-				System.out.println(skill[index].name);
-				System.out.println(" Dauer : "+skill[index].dauer+" Minuten");
-				System.out.println(" Effektivität : "+ skill[index].effektivitaet+" von 5 Punkten");
+				skill[index].skillAusgeben();
 				umgangVorhanden = true;
 				verbrauchteZeit = verbrauchteZeit+skill[index].dauer;
 			}

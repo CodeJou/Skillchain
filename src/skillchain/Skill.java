@@ -13,5 +13,11 @@ public class Skill {
 		this.dauer = dauer;
 		this.effektivitaet = effektivitaet;
 	}
-	
+//Methode zur Ausgabe der Skills inkl. der Eigenschaften
+	public void skillAusgeben()
+	{
+		System.out.println(name);
+		System.out.println(" Dauer : "+dauer+" Minuten");
+		System.out.println(" Effektivität : "+effektivitaet+" von 5 Punkten");	
+	}
 }
