@@ -175,16 +175,15 @@ public class Main {
 
     //(6) Hilfsmethode C Benutzereingabe zur Stresseinschätzung dem Stressbereich zuordnen
 	public static String pruefeEinordnungStressbereich(Stressbereich[]stressbereich, int stressEinschaetzung) {
-		String einordnungStressbereich;
-
-		if (stressEinschaetzung <= 39) {
-			einordnungStressbereich = stressbereich[0].name;
-		} else if (stressEinschaetzung <= 69) {
-			einordnungStressbereich = stressbereich[1].name;
-		} else {
-			einordnungStressbereich = stressbereich[2].name;
+		// For-Schleife durchläuft alle Stressbereiche
+		for (int i = 0; i < stressbereich.length; i++) {
+			//if Anweisung prüft den jeweiligen Stressbereich mithilfe der Methode pruefeStressbereich (Klasse Stressbereich)
+			if (stressbereich[i].pruefeStressbereich(stressEinschaetzung)) {
+				//Wenn die Benutzereingabe "stressEinschätzung" einem Bereich zugeordnet werden kann wird der dazugehörige Name des Bereichs ausgegeben
+				return stressbereich[i].name;
+			}
 		}
-		return einordnungStressbereich;
+		return "";//Java benötigt das zweite return (Falls Wert keinem Bereich zugeordnet werden kann)
 	}
 
     //(7) Liste Skills anhand von Benutzereingaben filtern

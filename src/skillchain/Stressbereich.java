@@ -10,5 +10,9 @@ public class Stressbereich {
 	this.untergrenze = untergrenze;
 	this.obergrenze  = obergrenze;	
 	}
-
+//Methode prüft ob Eingabewert "stressEinschätzung" in den Wertebereich fällt
+	public boolean pruefeStressbereich(int stressEinschaetzung)
+	{
+		return stressEinschaetzung >= untergrenze && stressEinschaetzung <= obergrenze;
+	}
 }
